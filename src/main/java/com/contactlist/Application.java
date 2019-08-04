@@ -1,5 +1,5 @@
 package com.contactlist;
-// commented message for test
+// commented message for test2
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
