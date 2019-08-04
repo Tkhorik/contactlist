@@ -1,33 +1,17 @@
-<html>
+<#import "parts/common.ftl" as c>
 
-<body>
-<div>
-    <form action="/logout" method="post">
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <input type="submit" value="Sign Out"/>
-    </form>
-</div>
-<div>
-    <form method="post">
-        <input type="text" name="text" placeholder="введитее сообщеение"/>
-        <input type="text" name="tag" placeholder="введитее tag"/>
-        <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-        <button type="submit">Submit</button>
-    </form>
-</div>
-
-<div>Список сообщний</div>
-<form method="post" action="filter">
-    <input type="text" name="filter">
-    <input type="hidden" name="_csrf" value="{{_csrf.token}}" />
-    <button type="submit">Find</button>
-</form>
-{{#messages}}
-    <div>
-        <b>{{id}}</b>
-        <span>{{text}}</span>
-        <i>{{tag}}</i>
+<@c.page>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <form method="get" action="/main" class="form-inline">
+                <input type="text" name="filter" class="form-control" value="${filter?ifExists}" placeholder="Search by tag" />
+                <button type="submit" class="btn btn-primary ml-2">Search</button>
+            </form>
+        </div>
     </div>
-{{/messages}}
-</body>
-</html>
+
+    <#include "parts/messageEdit.ftl" />
+
+    <#include "parts/messageList.ftl" />
+
+</@c.page>
