@@ -1,8 +1,9 @@
 <#import "parts/common.ftl" as c>
 <#import "parts/login.ftl" as l>
-<@c.page>
 
-Add new user
-@{#message}
-<@login "/registration" />
+<@c.page>
+    Add new user
+    ${message}
+    <#if myOptionalVar??>when-present<#else>when-missing</#if>
+    <@l.login "/registration" />
 </@c.page>
